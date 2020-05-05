@@ -5,7 +5,6 @@ import Logout from './Logout';
 
 class Header extends Component {
 	render() {
-		console.log(this.props.auth);
 		switch (this.props.auth) {
 			case null:
 				return <SpotifyLogin />;

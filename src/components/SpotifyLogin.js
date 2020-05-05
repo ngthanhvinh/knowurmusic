@@ -2,18 +2,13 @@ import React, { Component } from 'react';
 import OauthPopup from 'react-oauth-popup';
 import authorizeURL from '../utils/authorizeURL';
 import auth from '../services/auth';
-import { CLIENT_ID, CLIENT_SECRET, REDIRECT_URI } from '../config/keys';
+import keys from '../config/keys';
 
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 
 class SpotifyLogin extends Component {
-	constructor(props) {
-		super(props);
-		this.onCode = this.onCode.bind(this);
-	}
-
-	async onCode(code, params) {
+	onCode = async (code, params) => {
 		const requestOptions = {
 			method: 'POST',
 			headers: {
@@ -22,9 +17,9 @@ class SpotifyLogin extends Component {
 			body:
 				`grant_type=authorization_code` +
 				`&code=${code}` +
-				`&redirect_uri=${encodeURIComponent(REDIRECT_URI)}` +
-				`&client_id=${CLIENT_ID}` +
-				`&client_secret=${CLIENT_SECRET}`,
+				`&redirect_uri=${encodeURIComponent(keys.REDIRECT_URI)}` +
+				`&client_id=${keys.CLIENT_ID}` +
+				`&client_secret=${keys.CLIENT_SECRET}`,
 		};
 		// get access token from Spotify API
 		try {
@@ -45,7 +40,7 @@ class SpotifyLogin extends Component {
 		}
 
 		this.props.fetchUser();
-	}
+	};
 
 	render() {
 		return (
