@@ -5,7 +5,12 @@ const dev = {
 	REDIRECT_URI: 'http://localhost:3000/auth/spotify/callback',
 };
 
-const prod = {};
+const prod = {
+	CLIENT_ID: '240b77f6ee93409b9f7b848d6888e288',
+	CLIENT_SECRET: '53c5454abf5e4bacbde3b14a5f29364e',
+	SCOPES: 'user-read-email',
+	REDIRECT_URI: 'http://knowurmusic.herokuapp.com/auth/spotify/callback',
+};
 
 const keys = process.env.NODE_ENV === 'development' ? dev : prod;
 
