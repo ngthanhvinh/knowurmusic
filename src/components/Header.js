@@ -14,9 +14,12 @@ class Header extends Component {
 			case null:
 				return <SpotifyLogin />;
 			default:
+				const { displayName, href } = this.props.auth;
 				return (
 					<div>
-						<p>{this.props.auth}</p>
+						<div>
+							know <a href={href}>{displayName}</a> favourite music by time
+						</div>
 						<Logout />
 					</div>
 				);
