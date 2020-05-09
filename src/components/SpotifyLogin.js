@@ -7,7 +7,7 @@ import keys from '../config/keys';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 
-import './App.css'
+import './App.css';
 
 class SpotifyLogin extends Component {
 	onCode = async (code, params) => {
@@ -41,7 +41,8 @@ class SpotifyLogin extends Component {
 			console.log(error);
 		}
 
-		this.props.fetchUser();
+		// refresh page
+		window.location.reload(false);
 	};
 
 	render() {

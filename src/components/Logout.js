@@ -4,15 +4,16 @@ import auth from '../services/auth';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 
-import './App.css'
+import './App.css';
 
 class Logout extends Component {
 	onClick = () => {
 		auth.logout();
-		this.props.fetchUser();
+		// refresh page
+		window.location.reload(false);
 	};
 	render() {
-		return <button href="" onClick={this.onClick}>logout</button>;
+		return <button onClick={this.onClick}>logout</button>;
 	}
 }
 

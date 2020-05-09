@@ -1,21 +1,24 @@
+import SpotifyWebApi from 'spotify-web-api-js';
+
+const spotifyApi = new SpotifyWebApi();
+console.log('nani');
+
 const api = {
 	getUser: async (accessToken) => {
-		const requestOptions = {
-			method: 'GET',
-			headers: {
-				Authorization: `Bearer ${accessToken}`,
-			},
-		};
+		spotifyApi.setAccessToken(accessToken);
 		try {
-			let response = await fetch(
-				'https://api.spotify.com/v1/me',
-				requestOptions
-			);
-			if (!response.ok) {
-				throw Error(response.statusText);
-			}
-			response = await response.json();
-			return response;
+			const res = await spotifyApi.getMe();
+			return res;
+		} catch (error) {
+			console.log(error);
+		}
+	},
+
+	getSavedTracks: async (accessToken) => {
+		spotifyApi.setAccessToken(accessToken);
+		try {
+			const res = await spotifyApi.getMySavedTracks();
+			return res;
 		} catch (error) {
 			console.log(error);
 		}
