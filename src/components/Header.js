@@ -17,7 +17,7 @@ class Header extends Component {
 				const { id, url } = this.props.auth;
 				return (
 					<div>
-						<div className='header'>
+						<div className='header big'>
 							know <a href={url}>{id}</a>'s favourite music by time
 							<span className='logout'>
 								<Logout />

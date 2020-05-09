@@ -47,9 +47,14 @@ class SpotifyLogin extends Component {
 
 	render() {
 		return (
-			<OauthPopup url={authorizeURL()} onCode={this.onCode}>
-				<button>Click me to open a Popup</button>
-			</OauthPopup>
+			<div className="welcome big">
+				<OauthPopup url={authorizeURL()} onCode={this.onCode}>
+					<span>know </span>
+					<button className="button_bold">your</button>
+					<span> music with </span>
+					<button style={{ color: "#1DB954" }} className="button_bold">spotify</button>
+				</OauthPopup>
+			</div>
 		);
 	}
 }

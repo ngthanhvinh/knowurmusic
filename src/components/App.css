@@ -1,3 +1,7 @@
+body {
+    font-family: 'Manrope', sans-serif;
+}
+
 a {
     display: inline-block;
     text-decoration: none;
@@ -8,14 +12,25 @@ a:hover {
     color: #1DB954;
 }
 
+.big {
+    font-size: 25px;
+    font-weight: 800;
+}
+
+.welcome {
+    font-size: 50px;
+    position: fixed;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 .header {
-    position: relative;;
+    position: relative;
     padding-top: 10px;
     padding-bottom: 10px;
     text-align: center;
-    font-family: 'Manrope', sans-serif;
     font-size: 25px;
-    font-weight: 800;
     border-bottom: 1px solid royalblue;
 }
 
@@ -24,14 +39,26 @@ a:hover {
     right: 20px
 }
 
-button {
+.button_slim {
     /*https://stackoverflow.com/questions/1367409/how-to-make-button-look-like-a-link*/
     background: none;
     border: none;
     padding: 0;
-    font-size: 20px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 80%;
     color: royalblue;
     text-decoration: underline;
+    cursor: pointer;
+}
+
+.button_bold {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 100%;
+    color: royalblue;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 800;
     cursor: pointer;
 }
 

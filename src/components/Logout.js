@@ -13,7 +13,7 @@ class Logout extends Component {
 		window.location.reload(false);
 	};
 	render() {
-		return <button onClick={this.onClick}>logout</button>;
+		return <button className="button_slim" onClick={this.onClick}>logout</button>;
 	}
 }
 
