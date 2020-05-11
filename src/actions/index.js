@@ -29,7 +29,7 @@ export const fetchSavedTracks = () => async (dispatch) => {
 		const data = await apiServices.getSavedTracks(accessToken);
 		dispatch({
 			type: FETCH_SAVED_TRACKS,
-			payload: data.items,
+			payload: data,
 		});
 	} catch (error) {
 		console.log(error);
