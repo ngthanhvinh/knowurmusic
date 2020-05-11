@@ -12,6 +12,10 @@ a:hover {
     color: #1DB954;
 }
 
+button:hover {
+    color: #1DB954;
+}
+
 .big {
     font-size: 25px;
     font-weight: 800;
@@ -62,6 +66,56 @@ a:hover {
     cursor: pointer;
 }
 
-button:hover {
-    color: #1DB954;
+
+.track {
+    position: relative;
+    display: inline-block;
+    width: 24%;
+}
+
+.track_info {
+    display: none;
+}
+
+.track_info p {
+    margin: 10px;
+    max-height: 40%;
+}
+
+.track_info .half {
+    max-height: 50%;
+    overflow: hidden;
+}
+
+.track:hover .track_info {
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    font-weight: 600;
+    display: inline-block;
+    left: 0px;
+}
+
+.track:hover img {
+    filter: blur(2px) opacity(15%);
+}
+
+.album_cover {
+    width: 90%;
+    height: auto;
+    padding-right: 10%;
+    padding-bottom: 10%;
+}
+
+.year_outer {
+    margin: auto;
+    max-width: 700px;
+}
+
+.year_title {
+    z-index: 1000;
+    background-color: white;
+    padding: 10px;
+    position: sticky;
+    top: 0px;
 }
