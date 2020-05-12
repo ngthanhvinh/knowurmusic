@@ -7,7 +7,52 @@ class Tracks extends Component {
 		this.props.fetchSavedTracks();
 	}
 
-	displayYear = (item) => { }
+	displayYear = (item) => {
+		var by_year = {};
+		console.log(item[0])
+		for (const key in item) {
+			const year = item[key].track.album.release_date.slice(0, 4)
+			if (!(year in by_year))
+				by_year[year] = []
+			by_year[year].push(item[key])
+		}
+
+		var years = []
+		const tracks_count = (
+			<h1 className="year_outer" key="track_count">
+				you saved a total of
+				<span style={{ color: "royalblue" }}> {item.length} </span>
+				songs. here are all of them,
+				<span style={{ color: "royalblue" }}> oldest first: </span>
+			</h1>)
+
+		var min_year = 5000, max_year = -5000;
+
+		for (const year in by_year) {
+			min_year = Math.min(min_year, year)
+			max_year = Math.max(max_year, year)
+			years.push(
+				<div className="year_outer" key={year}>
+					<h2 className="year_title">
+						<span style={{ color: "royalblue" }}>{year}</span>
+						<span> / {by_year[year].length} songs</span>
+					</h2>
+					<div className="year_inner">
+						{by_year[year].map((item, key) => {
+							return <span key={key}>{this.displayTrack(item)}</span>;
+						})}
+					</div>
+				</div>)
+		}
+		const time_range = (
+			<h1 key="time_range" className="year_outer">
+				your music spans
+				<span style={{ color: "royalblue" }}> {max_year - min_year} </span>
+				years.
+			</h1>
+		)
+		return [time_range, tracks_count, years]
+	}
 
 	displayTrack = (item) => {
 		return (
@@ -20,7 +65,7 @@ class Tracks extends Component {
 							<p style={{ fontWeight: 800 }}>{item.track.name}</p>
 						</a></div>
 					<div className="half">
-						<p>
+						<p style={{ fontWeight: 800 }}>
 							by {item.track.artists
 								.map((artist, key) => (
 									<a key={key} href={artist.external_urls.spotify}>
@@ -39,32 +84,8 @@ class Tracks extends Component {
 		const tracks = this.props.tracks;
 		if (tracks == null)
 			return null
+		return this.displayYear(tracks)
 
-		var by_year = {};
-		console.log(tracks[0])
-		for (const key in tracks) {
-			const year = tracks[key].track.album.release_date.slice(0, 4)
-			if (!(year in by_year))
-				by_year[year] = []
-			by_year[year].push(tracks[key])
-		}
-
-		var years = []
-		for (const year in by_year) {
-			years.push(
-				<div className="year_outer" key={year}>
-					<h2 className="year_title">
-						<span style={{ color: "royalblue" }}>{year}</span>
-						<span> / {by_year[year].length} songs</span>
-					</h2>
-					<div className="year_inner">
-						{by_year[year].map((item, key) => {
-							return <span key={key}>{this.displayTrack(item)}</span>;
-						})}
-					</div>
-				</div>)
-		}
-		return years
 	}
 }
 
