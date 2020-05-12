@@ -5,6 +5,7 @@ import { fetchSavedTracks } from '../actions';
 import Tracks from './Tracks';
 import ChartByReleasedDate from './ChartByReleasedDate';
 import ChartByDiscoveredDate from './ChartByDiscoveredDate';
+import TimeRange from './TimeRange';
 
 class Dashboard extends Component {
 	componentDidMount() {
@@ -14,9 +15,10 @@ class Dashboard extends Component {
 	render() {
 		return (
 			<div>
-				<Tracks tracks={this.props.tracks} />
+				<TimeRange tracks={this.props.tracks} />
 				<ChartByReleasedDate tracks={this.props.tracks} />
 				<ChartByDiscoveredDate tracks={this.props.tracks} />
+				<Tracks tracks={this.props.tracks} />
 			</div>
 		);
 	}

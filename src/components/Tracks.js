@@ -18,7 +18,7 @@ class Tracks extends Component {
 						</a>
 					</div>
 					<div className='half'>
-						<p>
+						<p style={{ fontWeight: 800 }}>
 							by{' '}
 							{item.track.artists
 								.map((artist, key) => (
@@ -39,13 +39,20 @@ class Tracks extends Component {
 		if (tracks == null) return null;
 
 		let by_year = trackByReleasedDate(tracks);
-
+		const track_count = (
+			<h1 className="outer" key="track_count">
+				you saved a total of
+				<span className="colored"> {tracks.length} </span>
+				song(s), and here are all of them,
+				<span className="colored"> oldest first</span>
+				.
+			</h1>)
 		let years = [];
 		for (const year in by_year) {
 			years.push(
-				<div className='year_outer' key={year}>
+				<div className='outer' key={year}>
 					<h2 className='year_title'>
-						<span style={{ color: 'royalblue' }}>{year}</span>
+						<span className="colored">{year}</span>
 						<span> / {by_year[year].length} song(s)</span>
 					</h2>
 					<div className='year_inner'>
@@ -56,7 +63,7 @@ class Tracks extends Component {
 				</div>
 			);
 		}
-		return years;
+		return [track_count, years];
 	}
 }
 
