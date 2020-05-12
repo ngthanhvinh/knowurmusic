@@ -38,7 +38,7 @@ const TrackByYear = ({ year, byYear }) => {
 	const [isOpened, setIsOpened] = useState(false);
 
 	return (
-		<div className='year_outer' key={year}>
+		<div className='outer' key={year}>
 			<h2 className='year_title'>
 				<button onClick={() => setIsOpened(!isOpened)}>
 					{isOpened ? '-' : '+'}

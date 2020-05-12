@@ -7,10 +7,10 @@ class TimeRange extends Component {
         const tracks = this.props.tracks;
         if (tracks == null) return null;
 
-        let by_year = trackByReleasedDate(tracks);
+        let byYear = trackByReleasedDate(tracks);
         let min_year = 5000, max_year = -5000;
 
-        for (const year in by_year) {
+        for (const year in byYear) {
             min_year = Math.min(min_year, year);
             max_year = Math.max(max_year, year);
         }
@@ -32,10 +32,10 @@ class TimeRange extends Component {
         )
             : null)
 
-        const old_track = by_year[min_year][0];
+        const old_track = byYear[min_year][0];
 
         const example_old = (
-            <div className="example_wrapper">
+            <div className="example_wrapper" key="example_old">
                 <img
                     className="album_cover_big"
                     src={old_track.track.album.images[1].url}
@@ -44,7 +44,7 @@ class TimeRange extends Component {
 
                 <div>
                     <p>
-                        one of your oldest tracks is {' '}
+                        one of your oldest tracks is
                     </p>
                     <p>
                         <a className="bold" href="item.track.external_urls.spotify">{old_track.track.name}</a>
@@ -53,7 +53,7 @@ class TimeRange extends Component {
                         by {' '}
                         {old_track.track.artists
                             .map((artist, key) => (
-                                <a className="bold" key="old_track" href={artist.external_urls.spotify}>
+                                <a className="bold" key={key} href={artist.external_urls.spotify}>
                                     {artist.name}
                                 </a>
                             ))
@@ -67,9 +67,9 @@ class TimeRange extends Component {
             </div>
         )
 
-        const new_track = by_year[max_year][0];
+        const new_track = byYear[max_year][0];
         const example_new = (
-            <div className="example_wrapper">
+            <div className="example_wrapper" key="example_new">
                 <img
                     className="album_cover_big"
                     src={new_track.track.album.images[1].url}
@@ -88,7 +88,7 @@ class TimeRange extends Component {
                         by {' '}
                         {new_track.track.artists
                             .map((artist, key) => (
-                                <a className="bold" key="new_track" href={artist.external_urls.spotify}>
+                                <a className="bold" key={key} href={artist.external_urls.spotify}>
                                     {artist.name}
                                 </a>
                             ))

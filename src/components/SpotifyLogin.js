@@ -47,7 +47,7 @@ class SpotifyLogin extends Component {
 
 	render() {
 		return (
-			<div className="welcome big">
+			<div className="welcome bold">
 				<OauthPopup url={authorizeURL()} onCode={this.onCode}>
 					<span>know </span>
 					<button className="button_bold">your</button>

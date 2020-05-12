@@ -128,7 +128,7 @@ button:hover {
     position: absolute;
     display: inline-block;
     max-width: 68%;;
-    top: 5%;
+    top: 0;
 }
 
 .example_wrapper {
