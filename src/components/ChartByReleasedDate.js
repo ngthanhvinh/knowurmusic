@@ -2,13 +2,13 @@ import React from 'react';
 import { Bar } from 'react-chartjs-2';
 import tracksByReleasedDate from '../utils/tracksByReleasedDate';
 
-export default function ChartByReleasedDate({ tracks }) {
+const ChartByReleasedDate = ({ tracks }) => {
 	if (tracks == null) return null;
 
-	let by_year = tracksByReleasedDate(tracks);
+	let byYear = tracksByReleasedDate(tracks);
 
 	let data = {
-		labels: Object.keys(by_year),
+		labels: Object.keys(byYear),
 		datasets: [
 			{
 				label: 'Your liked songs by released date',
@@ -19,7 +19,7 @@ export default function ChartByReleasedDate({ tracks }) {
 				hoverBorderColor: 'rgb(6, 156, 255)',
 				barThickness: 'flex',
 				maxBarThickness: 40,
-				data: Object.values(by_year).map((item) => item.length),
+				data: Object.values(byYear).map((item) => item.length),
 			},
 		],
 	};
@@ -29,4 +29,6 @@ export default function ChartByReleasedDate({ tracks }) {
 			<Bar data={data} />
 		</div>
 	);
-}
+};
+
+export default ChartByReleasedDate;
