@@ -78,14 +78,15 @@ button:focus {
 .button_year {
     text-align: left;
     background: none;
-    border: none;
+    border: none; 
     width: 100%;
     font-size: 100%;
-    padding: 0;
-    padding-top: 10px;
-    padding-bottom: 10px;
     font-weight: 800;
     font-family: 'Manrope', sans-serif;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+    padding-left: 2%;
+    border-radius: 10px;
 }
 
 .button_year:hover {
@@ -105,39 +106,56 @@ button:focus {
 }
 
 .track_info {
+    text-align: center;
     display: none;
 }
 
 .track_info a {
-    color: navy;
+    color: black;
 }
 
 .track_info a:hover {
-    color: #1DB954;
+    color: gray;
 }
 
 .track_info p {
-    margin: 10px;
+    margin: 5px;
     max-height: 40%;
 }
 
-.track_info .half {
-    max-height: 50%;
+.track_info .half { 
+    width: 100%;
+    max-height: 47%;
+    text-align: center;
     overflow: hidden;
 }
 
 .tracks:hover .track_info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     position: absolute;
     width: 90%;
     height: 90%;
     font-weight: 400;
-    display: inline-block;
-    left: 5%;
-    top: 5%;
+    left: 4%;
+    top: 4%;
+    animation: FadeIn 0.25s;
+}
+
+.tracks img {
+    filter: none;
+    transition: 0.25s;
 }
 
 .tracks:hover img {
     filter: blur(2px) opacity(10%);
+    transition: 0.25s;
+}
+
+@keyframes FadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 .album_cover {
@@ -151,19 +169,22 @@ button:focus {
     max-width: 700px;
 }
 
-.year_title {
-    position: relative;
-    background-color: white;
+.year-wrapper {
     border-bottom: 1px solid royalblue;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.year_title {
     z-index: 1000;
+    background-color: white;
     position: sticky;
+    top: 0px;
     font-size: 1.5em;
-    margin-top: 20px;
-    margin-bottom: 5px;
 }
 
 .year_inner {
-    background-color: none;
+    padding-left: 4%;
 }
 
 .album_cover_big {

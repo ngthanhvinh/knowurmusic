@@ -16,7 +16,7 @@ class TimeRange extends Component {
         }
         const decade = (max_year - min_year >= 10 ? (
             <span className="Outer" style={{ padding: 'None' }}>
-                , i.e.
+                , for over
                 <span className="colored"> {Math.floor((max_year - min_year) / 10)} </span>
                 decades
             </span>

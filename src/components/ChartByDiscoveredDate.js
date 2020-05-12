@@ -7,11 +7,30 @@ const ChartByDiscoveredDate = ({ tracks }) => {
 
 	let byYear = tracksByDiscoveredDate(tracks);
 
+	let songMax = 0, yearMax = null;
+	for (let year in byYear) {
+		if (byYear[year].length > songMax) {
+			songMax = byYear[year].length;
+			yearMax = year;
+		}
+	}
+
+	const descriptionMax = (
+		<div className="outer">
+			<h1>
+				In
+				<span className="colored"> {yearMax}</span>
+				, you liked
+				<span className="colored"> {byYear[yearMax].length} </span> song(s), the largest number yet.
+			</h1>
+		</div>
+	)
+
 	let data = {
 		labels: Object.keys(byYear),
 		datasets: [
 			{
-				label: 'Your liked songs by your discovered date',
+				label: 'Your liked songs by discovered date',
 				borderWidth: 1,
 				backgroundColor: 'rgb(29, 185, 84, 0.2)',
 				borderColor: 'rgb(29, 185, 84)',
@@ -26,9 +45,13 @@ const ChartByDiscoveredDate = ({ tracks }) => {
 
 	return (
 		<div>
-			<div style={{ margin: 'auto', maxWidth: '700px' }}>
-				<Bar data={data} />
-			</div>
+			<div className="outer">
+				{descriptionMax}
+				<div>
+					<Bar data={data} />
+				</div>
+
+			</div >
 			<div className="separator"></div>
 		</div>
 	);

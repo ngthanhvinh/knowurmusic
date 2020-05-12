@@ -19,7 +19,6 @@ const DisplayTrack = ({ item }) => {
 				</div>
 				<div className='half'>
 					<p>
-						by{' '}
 						{item.track.artists
 							.map((artist, key) => (
 								<a key={key} href={artist.external_urls.spotify}>
@@ -38,8 +37,8 @@ const TrackByYear = ({ year, byYear }) => {
 	const [isOpened, setIsOpened] = useState(false);
 
 	return (
-		<div className='outer' key={year}>
-			<div className='year_title'>
+		<div className="outer year-wrapper" key={year}>
+			<div className="year_title">
 				<button className="button_year" onClick={() => setIsOpened(!isOpened)}>
 					<span style={{ color: 'royalblue' }}> {year}</span>
 					<span> / {byYear[year].length} song(s)</span>
@@ -47,7 +46,7 @@ const TrackByYear = ({ year, byYear }) => {
 				</button>
 			</div>
 			<Collapse isOpened={isOpened}>
-				<div className='year_inner'>
+				<div className="year_inner">
 					{byYear[year].map((item, key) => {
 						return (
 							<span key={key}>
