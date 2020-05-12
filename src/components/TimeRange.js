@@ -68,6 +68,7 @@ class TimeRange extends Component {
         )
 
         const new_track = byYear[max_year][0];
+
         const example_new = (
             <div className="example_wrapper" key="example_new">
                 <img
@@ -103,20 +104,24 @@ class TimeRange extends Component {
         )
 
         const range = (
-            <div className="outer">
-                <h1 key="range">
-                    your music spans
+            <div>
+                <div className="outer">
+                    <h1 key="range">
+                        your music spans
                     <span className="colored"> {max_year - min_year} </span>
                     years from
                     <span className="colored"> {min_year} </span>
                     to
                     <span className="colored"> {max_year}</span>
-                    {decade}
-                    {century}
+                        {decade}
+                        {century}
                     .
                 </h1>
-                {example_old}
-                {example_new}
+                    {example_old}
+                    {example_new}
+
+                </div>
+                <div className="separator"></div>
             </div>
 
         )

@@ -4,7 +4,7 @@ import trackByReleasedDate from '../utils/tracksByReleasedDate';
 
 const DisplayTrack = ({ item }) => {
 	return (
-		<div className='track'>
+		<div className='tracks'>
 			<img
 				className='album_cover'
 				src={item.track.album.images[1].url}
@@ -39,13 +39,13 @@ const TrackByYear = ({ year, byYear }) => {
 
 	return (
 		<div className='outer' key={year}>
-			<h2 className='year_title'>
-				<button onClick={() => setIsOpened(!isOpened)}>
-					{isOpened ? '-' : '+'}
+			<div className='year_title'>
+				<button className="button_year" onClick={() => setIsOpened(!isOpened)}>
+					<span style={{ color: 'royalblue' }}> {year}</span>
+					<span> / {byYear[year].length} song(s)</span>
+					<span className="indicator">{isOpened ? '–' : '+'}</span>
 				</button>
-				<span style={{ color: 'royalblue' }}>{year}</span>
-				<span> / {byYear[year].length} song(s)</span>
-			</h2>
+			</div>
 			<Collapse isOpened={isOpened}>
 				<div className='year_inner'>
 					{byYear[year].map((item, key) => {
@@ -66,7 +66,17 @@ const Tracks = ({ tracks }) => {
 
 	let byYear = trackByReleasedDate(tracks);
 
-	let years = [];
+	const songCount = (
+		<h1 className="outer" key="songCount">
+			you have saved a total of
+			<span class="colored"> {tracks.length} </span>
+			songs and here are all of them,
+			<span class="colored"> oldest first</span>.
+		</h1>
+	)
+
+	let years = [songCount];
+
 	for (const year in byYear) {
 		years.push(<TrackByYear year={year} byYear={byYear} />);
 	}

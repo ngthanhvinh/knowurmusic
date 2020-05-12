@@ -7,6 +7,23 @@ const ChartByReleasedDate = ({ tracks }) => {
 
 	let byYear = tracksByReleasedDate(tracks);
 
+	let songMax = 0, yearMax = null;
+	for (let year in byYear) {
+		if (byYear[year].length > songMax) {
+			songMax = byYear[year].length;
+			yearMax = year;
+		}
+	}
+
+	const regardMax = (
+		<div className="outer">
+			<h1>
+				<span className="colored">{yearMax} </span>
+				is your most favorite year in music.
+			</h1>
+		</div>
+	)
+
 	let data = {
 		labels: Object.keys(byYear),
 		datasets: [
@@ -25,8 +42,11 @@ const ChartByReleasedDate = ({ tracks }) => {
 	};
 
 	return (
-		<div style={{ margin: 'auto', maxWidth: '700px' }}>
-			<Bar data={data} />
+		<div className="outer">
+			{regardMax}
+			<div>
+				<Bar data={data} />
+			</div>
 		</div>
 	);
 };

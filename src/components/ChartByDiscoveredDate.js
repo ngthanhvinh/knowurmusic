@@ -25,8 +25,11 @@ const ChartByDiscoveredDate = ({ tracks }) => {
 	};
 
 	return (
-		<div style={{ margin: 'auto', maxWidth: '700px' }}>
-			<Bar data={data} />
+		<div>
+			<div style={{ margin: 'auto', maxWidth: '700px' }}>
+				<Bar data={data} />
+			</div>
+			<div className="separator"></div>
 		</div>
 	);
 };
