@@ -9,6 +9,7 @@
 		"chart.js": "^2.9.3",
 		"react": "^16.13.1",
 		"react-chartjs-2": "^2.9.0",
+		"react-collapse": "^5.0.1",
 		"react-dom": "^16.13.1",
 		"react-oauth-popup": "^0.1.0",
 		"react-redux": "^7.2.0",

@@ -1,11 +1,11 @@
 const tracksByReleasedDate = (tracks) => {
-	let by_year = {};
+	let byYear = {};
 	for (const key in tracks) {
 		const year = tracks[key].track.album.release_date.slice(0, 4);
-		if (!(year in by_year)) by_year[year] = [];
-		by_year[year].push(tracks[key]);
+		if (!(year in byYear)) byYear[year] = [];
+		byYear[year].push(tracks[key]);
 	}
-	return by_year;
+	return byYear;
 };
 
 export default tracksByReleasedDate;
