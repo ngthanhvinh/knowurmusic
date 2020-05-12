@@ -16,10 +16,6 @@ button:hover {
     color: #1DB954;
 }
 
-h1 {
-    padding-top: 20px;
-}
-
 .big {
     font-size: 25px;
     font-weight: 800;
@@ -101,7 +97,7 @@ h1 {
 }
 
 .track:hover img {
-    filter: blur(2px) opacity(10%);
+    filter: blur(2px) opacity(15%);
 }
 
 .album_cover {
@@ -118,9 +114,8 @@ h1 {
 
 .year_title {
     z-index: 1000;
-    background-color: white; 
-    padding-top: 10px;
-    padding-bottom: 10px; 
+    background-color: white;
+    padding: 10px;
     position: sticky;
     top: 0px;
 }
