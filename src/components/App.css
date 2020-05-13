@@ -85,7 +85,6 @@ button:focus {
     font-family: 'Manrope', sans-serif;
     padding-top: 0.25em;
     padding-bottom: 0.25em;
-    padding-left: 2%;
     border-radius: 10px;
 }
 
@@ -166,7 +165,9 @@ button:focus {
 
 .outer {
     margin: auto;
-    max-width: 700px;
+    max-width: 740px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .year-wrapper {
@@ -177,9 +178,10 @@ button:focus {
 
 .year_title {
     z-index: 1000;
-    background-color: white;
     position: sticky;
+    background-color: white;
     top: 0px;
+    width: 100%;
     font-size: 1.5em;
 }
 
@@ -197,7 +199,7 @@ button:focus {
 .example_wrapper div {
     position: absolute;
     display: inline-block;
-    max-width: 68%;;
+    max-width: 68%;
     top: 0;
 }
 
@@ -236,3 +238,45 @@ button:focus {
 .bold {
     font-weight: 800;
 }
+
+@media only screen and (max-width: 700px) {
+    .logout {
+        display: none;
+    }
+
+    .example_wrapper {
+        margin-top: 10px;
+        margin-bottom: 30px;
+    }
+
+    .example_wrapper img {
+        display: block;
+        width: 80%;
+    }
+
+    .example_wrapper div {
+        display: block;
+        position: relative;
+        max-width: 90%;
+        margin-top: 10px;
+    }
+
+    .example_wrapper p {
+        line-height: 1.75em;
+        display: inline;
+        margin: 0;
+        font-size: 20px;
+        font-weight: 400;
+    }
+    
+    .example_wrapper a {
+        display: inline;
+        max-width: 100%;
+        white-space: normal;
+        overflow: visible;
+    }
+
+    .tracks:hover .track_info {
+        display: none;
+    }
+  }

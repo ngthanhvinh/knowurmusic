@@ -10,7 +10,7 @@ class App extends Component {
 		return (
 			<BrowserRouter>
 				<Header />
-				<Route exact path='/time' component={TimeDashboard} />
+				<Route exact path='/' component={TimeDashboard} />
 				<Route path='/genre' component={GenreDashboard} />
 			</BrowserRouter>
 		);

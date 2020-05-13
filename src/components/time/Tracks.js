@@ -66,7 +66,7 @@ const Tracks = ({ tracks }) => {
 	let byYear = trackByReleasedDate(tracks);
 
 	const songCount = (
-		<h1 className='outer' key='songCount'>
+		<h1 className='outer' key='songCount' style={{ marginBottom: '10px' }}>
 			you have saved a total of
 			<span className='colored'> {tracks.length} </span>
 			songs and here are all of them,

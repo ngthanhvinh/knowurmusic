@@ -17,9 +17,9 @@ const ChartByDiscoveredDate = ({ tracks }) => {
 	}
 
 	const descriptionMax = (
-		<div className='outer'>
+		<div>
 			<h1>
-				In
+				in
 				<span className='colored'> {yearMax}</span>, you liked
 				<span className='colored'> {byYear[yearMax].length} </span> song(s), the
 				largest number yet.

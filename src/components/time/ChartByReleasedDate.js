@@ -32,7 +32,7 @@ const ChartByReleasedDate = ({ tracks }) => {
 		) : null;
 
 	const descriptionMax = (
-		<div className='outer'>
+		<div>
 			<h1>
 				the year
 				<span className='colored'> {yearMax} </span>

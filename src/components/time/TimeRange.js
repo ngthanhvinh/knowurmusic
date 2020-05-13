@@ -49,11 +49,12 @@ class TimeRange extends Component {
 				></img>
 
 				<div>
-					<p>one of your oldest tracks is</p>
+					<p>one of your oldest tracks is </p>
 					<p>
 						<a className='bold' href={oldTrack.track.external_urls.spotify}>
 							{oldTrack.track.name}
 						</a>
+						{' '}
 					</p>
 					<p>
 						by{' '}
@@ -68,6 +69,7 @@ class TimeRange extends Component {
 								</a>
 							))
 							.reduce((prev, curr) => [prev, ', ', curr])}
+						{', '}
 					</p>
 					<p>
 						released
@@ -92,12 +94,13 @@ class TimeRange extends Component {
 				></img>
 
 				<div>
-					<p>your most recent tracks include</p>
+					<p>your most recent tracks include </p>
 
 					<p>
 						<a className='bold' href={newTrack.track.external_urls.spotify}>
 							{newTrack.track.name}
 						</a>
+						{' '}
 					</p>
 					<p>
 						by{' '}
@@ -112,6 +115,7 @@ class TimeRange extends Component {
 								</a>
 							))
 							.reduce((prev, curr) => [prev, ', ', curr])}
+						{', '}
 					</p>
 					<p>
 						released
