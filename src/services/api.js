@@ -16,9 +16,9 @@ const api = {
 
 	// Get all saved tracks of the current user
 	getSavedTracks: async (accessToken) => {
+		spotifyApi.setAccessToken(accessToken);
 		const limit = 50;
 		let offset = 0;
-		spotifyApi.setAccessToken(accessToken);
 		let tracks = [];
 		while (true) {
 			try {

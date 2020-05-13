@@ -3,7 +3,6 @@ import { BrowserRouter, Route } from 'react-router-dom';
 
 import Header from './Header';
 import TimeDashboard from './time/TimeDashboard';
-import GenreDashboard from './genre/GenreDashboard';
 
 class App extends Component {
 	render() {
@@ -11,7 +10,6 @@ class App extends Component {
 			<BrowserRouter>
 				<Header />
 				<Route exact path='/' component={TimeDashboard} />
-				<Route path='/genre' component={GenreDashboard} />
 			</BrowserRouter>
 		);
 	}
