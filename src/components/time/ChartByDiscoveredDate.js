@@ -1,6 +1,6 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
-import tracksByDiscoveredDate from '../utils/tracksByDiscoveredDate';
+import tracksByDiscoveredDate from '../../utils/tracksByDiscoveredDate';
 
 const ChartByDiscoveredDate = ({ tracks }) => {
 	if (tracks == null) return null;

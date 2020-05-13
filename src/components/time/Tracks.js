@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Collapse } from 'react-collapse';
-import trackByReleasedDate from '../utils/tracksByReleasedDate';
+import trackByReleasedDate from '../../utils/tracksByReleasedDate';
 
 const DisplayTrack = ({ item }) => {
 	return (

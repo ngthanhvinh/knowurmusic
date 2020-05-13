@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 import Header from './Header';
-import Dashboard from './Dashboard';
+import TimeDashboard from './time/TimeDashboard';
+import GenreDashboard from './genre/GenreDashboard';
 
 class App extends Component {
 	render() {
 		return (
-			<div>
+			<BrowserRouter>
 				<Header />
-				<Dashboard />
-			</div>
+				<Route exact path='/time' component={TimeDashboard} />
+				<Route path='/genre' component={GenreDashboard} />
+			</BrowserRouter>
 		);
 	}
 }

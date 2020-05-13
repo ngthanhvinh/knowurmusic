@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import trackByReleasedDate from '../utils/tracksByReleasedDate';
+import trackByReleasedDate from '../../utils/tracksByReleasedDate';
 
 class TimeRange extends Component {
 	render() {
