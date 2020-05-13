@@ -37,19 +37,19 @@ const TrackByYear = ({ year, byYear }) => {
 	const [isOpened, setIsOpened] = useState(false);
 
 	return (
-		<div className="outer year-wrapper" key={year}>
-			<div className="year_title">
-				<button className="button_year" onClick={() => setIsOpened(!isOpened)}>
+		<div className='outer year-wrapper' key={year}>
+			<div className='year_title'>
+				<button className='button_year' onClick={() => setIsOpened(!isOpened)}>
 					<span style={{ color: 'royalblue' }}> {year}</span>
 					<span> / {byYear[year].length} song(s)</span>
-					<span className="indicator">{isOpened ? '–' : '+'}</span>
+					<span className='indicator'>{isOpened ? '–' : '+'}</span>
 				</button>
 			</div>
 			<Collapse isOpened={isOpened}>
-				<div className="year_inner">
+				<div className='year_inner'>
 					{byYear[year].map((item, key) => {
 						return (
-							<span key={key}>
+							<span key={year + '-' + key}>
 								<DisplayTrack item={item} />
 							</span>
 						);
@@ -66,18 +66,18 @@ const Tracks = ({ tracks }) => {
 	let byYear = trackByReleasedDate(tracks);
 
 	const songCount = (
-		<h1 className="outer" key="songCount">
+		<h1 className='outer' key='songCount'>
 			you have saved a total of
-			<span class="colored"> {tracks.length} </span>
+			<span className='colored'> {tracks.length} </span>
 			songs and here are all of them,
-			<span class="colored"> oldest first</span>.
+			<span className='colored'> oldest first</span>.
 		</h1>
-	)
+	);
 
 	let years = [songCount];
 
 	for (const year in byYear) {
-		years.push(<TrackByYear year={year} byYear={byYear} />);
+		years.push(<TrackByYear year={year} byYear={byYear} key={year} />);
 	}
 
 	return years;

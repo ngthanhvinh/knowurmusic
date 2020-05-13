@@ -7,8 +7,10 @@ const ChartByReleasedDate = ({ tracks }) => {
 
 	let byYear = tracksByReleasedDate(tracks);
 
-	let songMax = 0, yearMax = null;
-	let songSec = 0, yearSec = null;
+	let songMax = 0,
+		yearMax = null;
+	let songSec = 0,
+		yearSec = null;
 	for (let year in byYear) {
 		if (byYear[year].length > songMax) {
 			songMax = byYear[year].length;
@@ -21,24 +23,24 @@ const ChartByReleasedDate = ({ tracks }) => {
 			yearSec = year;
 		}
 	}
-	const descriptionSec = (yearSec != null ? (
-		<span>
-			, followed by
-			<span className="colored"> {yearSec}</span>
-		</span>) : null);
+	const descriptionSec =
+		yearSec != null ? (
+			<span>
+				, followed by
+				<span className='colored'> {yearSec}</span>
+			</span>
+		) : null;
 
 	const descriptionMax = (
-		<div className="outer">
+		<div className='outer'>
 			<h1>
 				the year
-				<span className="colored"> {yearMax} </span>
+				<span className='colored'> {yearMax} </span>
 				produced your favorite music
-				{descriptionSec}
-				.
+				{descriptionSec}.
 			</h1>
-
 		</div>
-	)
+	);
 
 	let data = {
 		labels: Object.keys(byYear),
@@ -57,11 +59,27 @@ const ChartByReleasedDate = ({ tracks }) => {
 		],
 	};
 
+	let options = {
+		scales: {
+			maintainAspectRatio: false,
+			yAxes: [
+				{
+					ticks: {
+						min: 0,
+						callback: (value) => {
+							if (value % 1 === 0) return value;
+						},
+					},
+				},
+			],
+		},
+	};
+
 	return (
-		<div className="outer">
+		<div className='outer'>
 			{descriptionMax}
 			<div>
-				<Bar data={data} />
+				<Bar data={data} options={options} />
 			</div>
 		</div>
 	);
