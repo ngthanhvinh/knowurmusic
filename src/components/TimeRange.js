@@ -51,7 +51,7 @@ class TimeRange extends Component {
 				<div>
 					<p>one of your oldest tracks is</p>
 					<p>
-						<a className='bold' href='item.track.external_urls.spotify'>
+						<a className='bold' href={oldTrack.track.external_urls.spotify}>
 							{oldTrack.track.name}
 						</a>
 					</p>
@@ -95,7 +95,7 @@ class TimeRange extends Component {
 					<p>your most recent tracks include</p>
 
 					<p>
-						<a className='bold' href='item.track.external_urls.spotify'>
+						<a className='bold' href={newTrack.track.external_urls.spotify}>
 							{newTrack.track.name}
 						</a>
 					</p>
