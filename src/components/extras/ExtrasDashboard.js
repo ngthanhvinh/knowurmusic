@@ -84,7 +84,11 @@ class ExtrasDashboard extends Component {
 		return (
 			<div>
 				<div className='outer'>
-					<h1>compare 50 of your top tracks versus the global top tracks</h1>
+					<h1>compare 50 of
+						<span className="colored"> your top tracks </span>
+						versus the
+						<span className="spotify-colored"> global top tracks</span>.
+					</h1>
 				</div>
 				<div className='separator'></div>
 				<div className='outer'>

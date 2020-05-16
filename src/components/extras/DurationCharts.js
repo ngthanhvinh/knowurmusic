@@ -31,22 +31,6 @@ const DurationCharts = ({ myTracks, globalTracks }) => {
 		],
 	};
 
-	let globalData = {
-		labels: dataLabels,
-		datasets: [
-			{
-				label: 'Global top tracks',
-				borderWidth: 1,
-				backgroundColor: 'rgb(29, 185, 84, 0.2)',
-				borderColor: 'rgb(29, 185, 84)',
-				hoverBackgroundColor: 'rgb(29, 185, 84, 0.4)',
-				hoverBorderColor: 'rgb(29, 185, 84)',
-				data: globalTracksDistribution,
-				barPercentage: 1.285,
-			},
-		],
-	};
-
 	let bothData = {
 		labels: dataLabels,
 		datasets: [
@@ -116,7 +100,6 @@ const DurationCharts = ({ myTracks, globalTracks }) => {
 	return (
 		<div>
 			<Bar data={myData} options={options} />
-			<Bar data={globalData} options={options} />
 			<Bar data={bothData} options={options} />
 		</div>
 	);
