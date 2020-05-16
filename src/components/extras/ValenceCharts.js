@@ -71,7 +71,7 @@ const ValenceCharts = ({ myTracks, globalTracks }) => {
 					id: "bar-x-axis2",
 					scaleLabel: {
 						display: true,
-						labelString: 'popularity'
+						labelString: 'valence'
 					},
 					ticks: {
 						max: 1.0,

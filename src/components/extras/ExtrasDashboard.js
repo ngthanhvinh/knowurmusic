@@ -1,9 +1,28 @@
 import React, { Component } from 'react';
 import auth from '../../services/auth';
 import api from '../../services/api';
+import ScrollMenu from 'react-horizontal-scrolling-menu';
 import PopularityCharts from './PopularityCharts';
 import DurationCharts from './DurationCharts';
 import ValenceCharts from './ValenceCharts';
+import DanceablityCharts from './DanceabilityCharts';
+
+const DisplayTrack = ({ item }) => {
+	return (
+		<div className="wrapper">
+			<img
+				draggable={false}
+				src={item.album.images[1].url}
+				alt={item.name}
+			></img>
+			<div className="track">
+				<a href={item.external_urls.spotify}>
+					<p style={{ fontWeight: 600 }}>{item.name}</p>
+				</a>
+			</div>
+		</div>
+	);
+};
 
 class ExtrasDashboard extends Component {
 	state = {
@@ -84,12 +103,47 @@ class ExtrasDashboard extends Component {
 		return (
 			<div>
 				<div className='outer'>
-					<h1>compare 50 of
+					<h1>
+						compare
 						<span className="colored"> your top tracks </span>
-						versus the
-						<span className="spotify-colored"> global top tracks</span>.
 					</h1>
 				</div>
+
+				<div className="tracks-bar">
+					<ScrollMenu
+						wheel={false}
+						inertiaScrolling={true}
+						data={myTracks.map((item, key) => {
+							return (
+								<span key={key}>
+									<DisplayTrack item={item} />
+								</span>
+							);
+						})}
+					/>
+				</div>
+
+				<div className='outer'>
+					<h1 style={{ marginTop: '0' }}>
+						versus the
+						<span className="spotify-colored"> global top tracks</span>
+					</h1>
+				</div>
+
+				<div className="tracks-bar">
+					<ScrollMenu
+						wheel={false}
+						inertiaScrolling={true}
+						data={globalTracks.map((item, key) => {
+							return (
+								<span key={key}>
+									<DisplayTrack item={item} />
+								</span>
+							);
+						})}
+					/>
+				</div>
+
 				<div className='separator'></div>
 				<div className='outer'>
 					<h1 className="colored">popularity</h1>
@@ -117,13 +171,27 @@ class ExtrasDashboard extends Component {
 						Tracks with high valence sound more positive (e.g. happy,
 						cheerful, euphoric), while tracks with low valence sound more negative
 						(e.g. sad, depressed, angry).
-				</h3>
+					</h3>
 					<ValenceCharts
 						myTracks={myTracksFeatures.map((item) => item.valence)}
 						globalTracks={globalTracksFeatures.map((item) => item.valence)}
 					/>
 				</div>
-			</div>
+				<div className='separator'></div>
+				<div className='outer'>
+					<h1 className="colored">danceability</h1>
+					<h3>
+						Danceability describes how suitable a track is for dancing based on a
+						combination of musical elements including tempo, rhythm stability,
+						beat strength, and overall regularity.
+					</h3>
+					<DanceablityCharts
+						myTracks={myTracksFeatures.map((item) => item.danceability)}
+						globalTracks={globalTracksFeatures.map((item) => item.danceability)}
+					/>
+				</div>
+				<div className='separator'></div>
+			</div >
 		);
 	}
 }

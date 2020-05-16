@@ -5,11 +5,13 @@ import trackByReleasedDate from '../../utils/tracksByReleasedDate';
 const DisplayTrack = ({ item }) => {
 	return (
 		<div className='tracks'>
-			<img
-				className='album_cover'
-				src={item.track.album.images[1].url}
-				alt={item.track.name}
-			></img>
+			<a href={item.track.external_urls.spotify} target="_blank" rel="noopener noreferrer">
+				<img
+					className='album_cover'
+					src={item.track.album.images[1].url}
+					alt={item.track.name}
+				></img>
+			</a>
 
 			<div className='track_info'>
 				<div className='half'>

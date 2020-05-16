@@ -254,9 +254,41 @@ button:focus {
     font-weight: 800;
 }
 
+.tracks-bar {
+    margin: none;
+    padding: none;
+    width: 100vw;
+}
+
+.tracks-bar img {
+    width: 150px;
+    margin: 0;
+}
+
+.tracks-bar .wrapper {
+    margin-right: 10px;
+    width: 150px;
+}
+
+.tracks-bar .track p {
+    opacity: 0;
+    transition-duration: 0.25s;
+    display: inline-block;
+    margin: 0;
+    width: 150px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.tracks-bar .wrapper:hover p {
+    opacity: 1;
+    transition-duration: 0.25s;
+}
 
 
 @media only screen and (max-width: 700px) {
+    
     .nav {
         display: block;
     }
@@ -296,4 +328,12 @@ button:focus {
     .tracks:hover .track_info {
         display: none;
     }
-  }
+
+    .tracks img {
+        filter: none;
+    }
+    
+    .tracks:hover img {
+        filter: opacity(0.8);
+    }
+}
