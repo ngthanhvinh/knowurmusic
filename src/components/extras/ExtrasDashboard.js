@@ -82,28 +82,43 @@ class ExtrasDashboard extends Component {
 		}
 
 		return (
-			<div className='outer'>
-				<p>Compare your top tracks vs global top tracks</p>
-				<p>Popularity</p>
-				<PopularityCharts
-					myTracks={myTracks.map((item) => item.popularity)}
-					globalTracks={globalTracks.map((item) => item.popularity)}
-				/>
-				<p>Duration (in minutes)</p>
-				<DurationCharts
-					myTracks={myTracksFeatures.map((item) => item.duration_ms)}
-					globalTracks={globalTracksFeatures.map((item) => item.duration_ms)}
-				/>
-				<p>Valence</p>
-				<p>
-					Fact: Tracks with high valence sound more positive (e.g. happy,
-					cheerful, euphoric), while tracks with low valence sound more negative
-					(e.g. sad, depressed, angry)
-				</p>
-				<ValenceCharts
-					myTracks={myTracksFeatures.map((item) => item.valence)}
-					globalTracks={globalTracksFeatures.map((item) => item.valence)}
-				/>
+			<div>
+				<div className='outer'>
+					<h1>compare 50 of your top tracks versus the global top tracks</h1>
+				</div>
+				<div className='separator'></div>
+				<div className='outer'>
+					<h1 className="colored">popularity</h1>
+					<h3>
+						The popularity of a track is an algorithmically-calculated value between 0 and 100,
+						with 100 being the most popular.
+					</h3>
+					<PopularityCharts
+						myTracks={myTracks.map((item) => item.popularity)}
+						globalTracks={globalTracks.map((item) => item.popularity)}
+					/>
+				</div>
+				<div className='separator'></div>
+				<div className='outer'>
+					<h1 className="colored">duration range</h1>
+					<DurationCharts
+						myTracks={myTracksFeatures.map((item) => item.duration_ms)}
+						globalTracks={globalTracksFeatures.map((item) => item.duration_ms)}
+					/>
+				</div>
+				<div className='separator'></div>
+				<div className='outer'>
+					<h1 className="colored">valence</h1>
+					<h3>
+						Tracks with high valence sound more positive (e.g. happy,
+						cheerful, euphoric), while tracks with low valence sound more negative
+						(e.g. sad, depressed, angry).
+				</h3>
+					<ValenceCharts
+						myTracks={myTracksFeatures.map((item) => item.valence)}
+						globalTracks={globalTracksFeatures.map((item) => item.valence)}
+					/>
+				</div>
 			</div>
 		);
 	}

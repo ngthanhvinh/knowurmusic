@@ -26,7 +26,7 @@ const DurationCharts = ({ myTracks, globalTracks }) => {
 				hoverBackgroundColor: 'rgb(6, 155, 255, 0.4)',
 				hoverBorderColor: 'rgb(6, 156, 255)',
 				data: myTracksDistribution,
-				barPercentage: 1.3,
+				barPercentage: 1.285,
 			},
 		],
 	};
@@ -42,7 +42,33 @@ const DurationCharts = ({ myTracks, globalTracks }) => {
 				hoverBackgroundColor: 'rgb(29, 185, 84, 0.4)',
 				hoverBorderColor: 'rgb(29, 185, 84)',
 				data: globalTracksDistribution,
-				barPercentage: 1.3,
+				barPercentage: 1.285,
+			},
+		],
+	};
+
+	let bothData = {
+		labels: dataLabels,
+		datasets: [
+			{
+				label: 'Your top tracks',
+				borderWidth: 1,
+				backgroundColor: 'rgb(6, 155, 255, 0.2)',
+				borderColor: 'rgb(6, 156, 255)',
+				hoverBackgroundColor: 'rgb(6, 155, 255, 0.4)',
+				hoverBorderColor: 'rgb(6, 156, 255)',
+				data: myTracksDistribution,
+				barPercentage: 1.285,
+			},
+			{
+				label: 'Global top tracks',
+				borderWidth: 1,
+				backgroundColor: 'rgb(29, 185, 84, 0.2)',
+				borderColor: 'rgb(29, 185, 84)',
+				hoverBackgroundColor: 'rgb(29, 185, 84, 0.4)',
+				hoverBorderColor: 'rgb(29, 185, 84)',
+				data: globalTracksDistribution,
+				barPercentage: 1,
 			},
 		],
 	};
@@ -54,13 +80,19 @@ const DurationCharts = ({ myTracks, globalTracks }) => {
 		scales: {
 			xAxes: [
 				{
+					stacked: true,
 					display: false,
+					id: "bar-x-axis1",
 					ticks: {
 						max: 6.5,
 					},
 				},
 				{
-					display: true,
+					id: "bar-x-axis2",
+					scaleLabel: {
+						display: true,
+						labelString: 'duration (in minutes)'
+					},
 					ticks: {
 						max: 7,
 					},
@@ -68,6 +100,10 @@ const DurationCharts = ({ myTracks, globalTracks }) => {
 			],
 			yAxes: [
 				{
+					scaleLabel: {
+						display: true,
+						labelString: 'number of tracks'
+					},
 					ticks: {
 						beginAtZero: true,
 						suggestedMax: 20,
@@ -81,6 +117,7 @@ const DurationCharts = ({ myTracks, globalTracks }) => {
 		<div>
 			<Bar data={myData} options={options} />
 			<Bar data={globalData} options={options} />
+			<Bar data={bothData} options={options} />
 		</div>
 	);
 };
