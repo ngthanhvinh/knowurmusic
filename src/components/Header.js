@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import SpotifyLogin from './SpotifyLogin';
 import Logout from './Logout';
 import { fetchUser } from '../actions';
+import { withRouter } from 'react-router-dom';
 
 class Header extends Component {
 	componentDidMount() {
@@ -10,6 +11,20 @@ class Header extends Component {
 	}
 
 	render() {
+		const path = this.props.location.pathname
+		let option = (
+			<div className="nav">
+				<span className='colored'>by time</span>
+				<a href="/extras" className='nav-item'> / vs the world</a>
+			</div>
+		)
+		if (path === '/extras') {
+			option = (
+				<div className="nav">
+					<a href="/" className='nav-item'>by time / </a>
+					<span className='colored'>vs the world</span>
+				</div>)
+		}
 		switch (this.props.auth) {
 			case null:
 				return <SpotifyLogin />;
@@ -18,7 +33,8 @@ class Header extends Component {
 				return (
 					<div>
 						<div className='header bold'>
-							know <a href={url}>{id}</a>'s favourite music by time
+							<span>know <a href={url}>{id}</a>'s music </span>
+							{option}
 							<span className='logout'>
 								<Logout />
 							</span>
@@ -33,4 +49,4 @@ function mapStateToProps({ auth }) {
 	return { auth };
 }
 
-export default connect(mapStateToProps, { fetchUser })(Header);
+export default withRouter(connect(mapStateToProps, { fetchUser })(Header));
