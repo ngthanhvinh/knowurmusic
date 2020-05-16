@@ -68,7 +68,7 @@ const DurationCharts = ({ myTracks, globalTracks }) => {
 				hoverBackgroundColor: 'rgb(29, 185, 84, 0.4)',
 				hoverBorderColor: 'rgb(29, 185, 84)',
 				data: globalTracksDistribution,
-				barPercentage: 1,
+				barPercentage: 1.285,
 			},
 		],
 	};
