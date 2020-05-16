@@ -1,28 +1,21 @@
 import React, { Component } from 'react';
-import { Bar } from 'react-chartjs-2';
 import auth from '../../services/auth';
 import api from '../../services/api';
-
-const getDistribution = (tracks) => {
-	let dataValues = new Array(20).fill(0);
-	for (const key in tracks) {
-		dataValues[Math.min(19, parseInt(tracks[key].popularity / 5))]++;
-	}
-	return dataValues;
-};
+import PopularityCharts from './PopularityCharts';
+import DurationCharts from './DurationCharts';
+import ValenceCharts from './ValenceCharts';
 
 class ExtrasDashboard extends Component {
 	state = {
 		myTracks: null,
 		globalTracks: null,
+		myTracksFeatures: null,
+		globalTracksFeatures: null,
 	};
 
 	async componentDidMount() {
 		const accessToken = auth.getAccessToken();
-		if (!accessToken) {
-			this.setState({ tracks: null });
-			return;
-		}
+		if (!accessToken) return;
 
 		let myTracks = null;
 		let globalTracks = null;
@@ -33,7 +26,6 @@ class ExtrasDashboard extends Component {
 			console.log(error);
 			return;
 		}
-
 		try {
 			globalTracks = await api.getGlobalTopTracks(accessToken);
 		} catch (error) {
@@ -43,86 +35,75 @@ class ExtrasDashboard extends Component {
 
 		globalTracks = globalTracks.map((item) => item.track);
 
-		this.setState({ myTracks, globalTracks });
+		let myTracksFeatures = null;
+		let globalTracksFeatures = null;
+		try {
+			myTracksFeatures = await api.getTracksFeatures(
+				accessToken,
+				myTracks.map((item) => item.id)
+			);
+		} catch (error) {
+			console.log(error);
+			return;
+		}
+		try {
+			globalTracksFeatures = await api.getTracksFeatures(
+				accessToken,
+				globalTracks.map((item) => item.id)
+			);
+		} catch (error) {
+			console.log(error);
+			return;
+		}
+
+		this.setState({
+			myTracks,
+			globalTracks,
+			myTracksFeatures,
+			globalTracksFeatures,
+		});
 	}
 
 	render() {
-		const { myTracks, globalTracks } = this.state;
+		const {
+			myTracks,
+			globalTracks,
+			myTracksFeatures,
+			globalTracksFeatures,
+		} = this.state;
 
-		let myTracksDistribution = getDistribution(myTracks);
-		let globalTracksDistribution = getDistribution(globalTracks);
-
-		let dataLabels = new Array(21);
-		for (let i = 0; i < dataLabels.length; ++i) {
-			dataLabels[i] = 5 * i;
+		if (
+			!myTracks ||
+			!globalTracks ||
+			!myTracksFeatures ||
+			!globalTracksFeatures
+		) {
+			return null;
 		}
 
-		let myData = {
-			labels: dataLabels,
-			datasets: [
-				{
-					label: 'Your top tracks',
-					borderWidth: 1,
-					backgroundColor: 'rgb(6, 155, 255, 0.2)',
-					borderColor: 'rgb(6, 156, 255)',
-					hoverBackgroundColor: 'rgb(6, 155, 255, 0.4)',
-					hoverBorderColor: 'rgb(6, 156, 255)',
-					data: myTracksDistribution,
-					barPercentage: 1.3,
-				},
-			],
-		};
-
-		let globalData = {
-			labels: dataLabels,
-			datasets: [
-				{
-					label: 'Global top tracks',
-					borderWidth: 1,
-					backgroundColor: 'rgb(29, 185, 84, 0.2)',
-					borderColor: 'rgb(29, 185, 84)',
-					hoverBackgroundColor: 'rgb(29, 185, 84, 0.4)',
-					hoverBorderColor: 'rgb(29, 185, 84)',
-					data: globalTracksDistribution,
-					barPercentage: 1.3,
-				},
-			],
-		};
-
-		let options = {
-			tooltips: {
-				enabled: false,
-			},
-			scales: {
-				xAxes: [
-					{
-						display: false,
-						ticks: {
-							max: 95,
-						},
-					},
-					{
-						display: true,
-						ticks: {
-							max: 100,
-						},
-					},
-				],
-				yAxes: [
-					{
-						ticks: {
-							beginAtZero: true,
-							suggestedMax: 30,
-						},
-					},
-				],
-			},
-		};
-
 		return (
-			<div>
-				<Bar data={myData} options={options} />
-				<Bar data={globalData} options={options} />
+			<div className='outer'>
+				<p>Compare your top tracks vs global top tracks</p>
+				<p>Popularity</p>
+				<PopularityCharts
+					myTracks={myTracks.map((item) => item.popularity)}
+					globalTracks={globalTracks.map((item) => item.popularity)}
+				/>
+				<p>Duration (in minutes)</p>
+				<DurationCharts
+					myTracks={myTracksFeatures.map((item) => item.duration_ms)}
+					globalTracks={globalTracksFeatures.map((item) => item.duration_ms)}
+				/>
+				<p>Valence</p>
+				<p>
+					Fact: Tracks with high valence sound more positive (e.g. happy,
+					cheerful, euphoric), while tracks with low valence sound more negative
+					(e.g. sad, depressed, angry)
+				</p>
+				<ValenceCharts
+					myTracks={myTracksFeatures.map((item) => item.valence)}
+					globalTracks={globalTracksFeatures.map((item) => item.valence)}
+				/>
 			</div>
 		);
 	}

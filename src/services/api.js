@@ -53,14 +53,23 @@ const api = {
 	getGlobalTopTracks: async (accessToken) => {
 		spotifyApi.setAccessToken(accessToken);
 		const top50PlaylistId = '37i9dQZEVXbMDoHDwVN2tF';
-		const limit = 50;
-		const offset = 0;
 		try {
 			const res = await spotifyApi.getPlaylist(top50PlaylistId, {
-				limit,
-				offset,
+				limit: 50,
+				offset: 0,
 			});
 			return res.tracks.items;
+		} catch (error) {
+			console.log(error);
+		}
+	},
+
+	// Get tracks' features
+	getTracksFeatures: async (accessToken, trackIds) => {
+		spotifyApi.setAccessToken(accessToken);
+		try {
+			const res = await spotifyApi.getAudioFeaturesForTracks(trackIds);
+			return res.audio_features;
 		} catch (error) {
 			console.log(error);
 		}
