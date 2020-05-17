@@ -11,22 +11,6 @@ const ValenceCharts = ({ myTracks, globalTracks }) => {
 		dataLabels[i] = (0.1 * i).toFixed(1);
 	}
 
-	let myData = {
-		labels: dataLabels,
-		datasets: [
-			{
-				label: 'Your top tracks',
-				borderWidth: 1,
-				backgroundColor: 'rgb(6, 155, 255, 0.2)',
-				borderColor: 'rgb(6, 156, 255)',
-				hoverBackgroundColor: 'rgb(6, 155, 255, 0.4)',
-				hoverBorderColor: 'rgb(6, 156, 255)',
-				data: myTracksDistribution,
-				barPercentage: 1.285,
-			},
-		],
-	};
-
 	let bothData = {
 		labels: dataLabels,
 		datasets: [
@@ -34,18 +18,18 @@ const ValenceCharts = ({ myTracks, globalTracks }) => {
 				label: 'Your top tracks',
 				borderWidth: 1,
 				backgroundColor: 'rgb(6, 155, 255, 0.2)',
-				borderColor: 'rgb(6, 156, 255)',
+				borderColor: 'rgb(6, 155, 255)',
 				hoverBackgroundColor: 'rgb(6, 155, 255, 0.4)',
-				hoverBorderColor: 'rgb(6, 156, 255)',
+				hoverBorderColor: 'rgb(6, 155, 255)',
 				data: myTracksDistribution,
 				barPercentage: 1.275,
 			},
 			{
 				label: 'Global top tracks',
 				borderWidth: 1,
-				backgroundColor: 'rgb(29, 185, 84, 0.2)',
+				backgroundColor: 'rgb(29, 185, 84, 0.5)',
 				borderColor: 'rgb(29, 185, 84)',
-				hoverBackgroundColor: 'rgb(29, 185, 84, 0.4)',
+				hoverBackgroundColor: 'rgb(29, 185, 84, 0.7)',
 				hoverBorderColor: 'rgb(29, 185, 84)',
 				data: globalTracksDistribution,
 				barPercentage: 1.275,
@@ -60,7 +44,7 @@ const ValenceCharts = ({ myTracks, globalTracks }) => {
 		scales: {
 			xAxes: [
 				{
-					id: "bar-x-axis1",
+					id: 'bar-x-axis1',
 					stacked: true,
 					display: false,
 					ticks: {
@@ -68,10 +52,10 @@ const ValenceCharts = ({ myTracks, globalTracks }) => {
 					},
 				},
 				{
-					id: "bar-x-axis2",
+					id: 'bar-x-axis2',
 					scaleLabel: {
 						display: true,
-						labelString: 'valence'
+						labelString: 'valence',
 					},
 					ticks: {
 						max: 1.0,
@@ -89,12 +73,7 @@ const ValenceCharts = ({ myTracks, globalTracks }) => {
 		},
 	};
 
-	return (
-		<div>
-			<Bar data={myData} options={options} />
-			<Bar data={bothData} options={options} />
-		</div>
-	);
+	return <Bar data={bothData} options={options} />;
 };
 
 export default ValenceCharts;

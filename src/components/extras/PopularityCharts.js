@@ -11,22 +11,6 @@ const PopularityCharts = ({ myTracks, globalTracks }) => {
 		dataLabels[i] = 5 * i;
 	}
 
-	let myData = {
-		labels: dataLabels,
-		datasets: [
-			{
-				label: 'Your top tracks',
-				borderWidth: 1,
-				backgroundColor: 'rgb(6, 155, 255, 0.2)',
-				borderColor: 'rgb(6, 156, 255)',
-				hoverBackgroundColor: 'rgb(6, 155, 255, 0.4)',
-				hoverBorderColor: 'rgb(6, 156, 255)',
-				data: myTracksDistribution,
-				barPercentage: 1.3,
-			},
-		],
-	};
-
 	let bothData = {
 		labels: dataLabels,
 		datasets: [
@@ -34,21 +18,21 @@ const PopularityCharts = ({ myTracks, globalTracks }) => {
 				label: 'Your top tracks',
 				borderWidth: 1,
 				backgroundColor: 'rgb(6, 155, 255, 0.2)',
-				borderColor: 'rgb(6, 156, 255)',
+				borderColor: 'rgb(6, 155, 255)',
 				hoverBackgroundColor: 'rgb(6, 155, 255, 0.4)',
-				hoverBorderColor: 'rgb(6, 156, 255)',
+				hoverBorderColor: 'rgb(6, 155, 255)',
 				data: myTracksDistribution,
 				barPercentage: 1.285,
 			},
 			{
 				label: 'Global top tracks',
 				borderWidth: 1,
-				backgroundColor: 'rgb(29, 185, 84, 0.2)',
+				backgroundColor: 'rgb(29, 185, 84, 0.5)',
 				borderColor: 'rgb(29, 185, 84)',
-				hoverBackgroundColor: 'rgb(29, 185, 84, 0.4)',
+				hoverBackgroundColor: 'rgb(29, 185, 84, 0.7)',
 				hoverBorderColor: 'rgb(29, 185, 84)',
 				data: globalTracksDistribution,
-				barPercentage: 1.3,
+				barPercentage: 1.285,
 			},
 		],
 	};
@@ -60,19 +44,18 @@ const PopularityCharts = ({ myTracks, globalTracks }) => {
 		scales: {
 			xAxes: [
 				{
-					id: "bar-x-axis1",
+					id: 'bar-x-axis1',
 					stacked: true,
 					display: false,
 					ticks: {
 						max: 95,
 					},
-
 				},
 				{
-					id: "bar-x-axis2",
+					id: 'bar-x-axis2',
 					scaleLabel: {
 						display: true,
-						labelString: 'popularity'
+						labelString: 'popularity',
 					},
 					ticks: {
 						max: 100,
@@ -83,7 +66,7 @@ const PopularityCharts = ({ myTracks, globalTracks }) => {
 				{
 					scaleLabel: {
 						display: true,
-						labelString: 'number of tracks'
+						labelString: 'number of tracks',
 					},
 					ticks: {
 						beginAtZero: true,
@@ -94,12 +77,7 @@ const PopularityCharts = ({ myTracks, globalTracks }) => {
 		},
 	};
 
-	return (
-		<div>
-			<Bar data={myData} options={options} />
-			<Bar data={bothData} options={options} />
-		</div>
-	);
+	return <Bar data={bothData} options={options} />;
 };
 
 export default PopularityCharts;
