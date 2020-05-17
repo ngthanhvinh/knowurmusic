@@ -53,26 +53,37 @@ button:focus {
 }
 
 .nav-item {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.nav-thin {
     display: inline;
     font-weight: 400;
 }
 
-
 .logout {
-    display: none;
+    z-index: 1100;
+    top: 12px;
+    right: 12px;
+    display: inline-block;
     position: absolute;
-    right: 20px
+    background: none;
+    border: 1.5px solid lightgray;
+    border-radius: 50%;
+    width: 1.55em;
+    padding: 0;
+    font-family: 'Manrope', sans-serif; 
+    font-size: 80%;
+    color: lightgray;
+    cursor: pointer;
+    transition-duration: 0.25s;
 }
 
-.button_slim {
-    background: none;
-    border: none;
-    padding: 0;
-    font-family: 'Manrope', sans-serif;
-    font-size: 80%;
-    color: royalblue;
-    text-decoration: underline;
-    cursor: pointer;
+.logout:hover {
+    color: salmon;
+    border: 1.5px solid salmon;
+    transition-duration: 0.25s;
 }
 
 .button_bold {
@@ -286,12 +297,46 @@ button:focus {
     transition-duration: 0.25s;
 }
 
+.slash {
+    font-weight: 400;
+}
 
-@media only screen and (max-width: 700px) {
-    
+.selected {
+    color: royalblue;
+}
+
+@media only screen and (max-width: 800px) {
     .nav {
         display: block;
     }
+
+    .logout {
+        top: 35%;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .nav-item {
+        display: block;
+    }
+    .slash {
+        display: none;
+    }
+    .selected {
+        display: inline-block;
+        color: white;
+        border-radius: 15px;
+        padding-left: 10px;
+        padding-bottom: 5px;
+        padding-top: 2px;
+        padding-right: 10px;
+        margin-top: 2px;
+        background-color: royalblue;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+
 
     .example_wrapper {
         margin-top: 10px;

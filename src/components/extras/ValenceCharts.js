@@ -64,6 +64,10 @@ const ValenceCharts = ({ myTracks, globalTracks }) => {
 			],
 			yAxes: [
 				{
+					scaleLabel: {
+						display: true,
+						labelString: 'number of tracks',
+					},
 					ticks: {
 						beginAtZero: true,
 						suggestedMax: 20,

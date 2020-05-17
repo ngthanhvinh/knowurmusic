@@ -94,6 +94,9 @@ class ExtrasDashboard extends Component {
 						The popularity of a track is an algorithmically-calculated value
 						between 0 and 100, with 100 being the most popular.
 					</h3>
+					<h4 className="colored">
+						Tips: click/tap on the legends to hide or show the data.
+					</h4>
 					<PopularityCharts
 						myTracks={myTracks.map((item) => item.popularity)}
 						globalTracks={globalTracks.map((item) => item.popularity)}

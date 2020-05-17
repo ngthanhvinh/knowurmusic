@@ -14,30 +14,30 @@ class Header extends Component {
 		const path = this.props.location.pathname
 		let option = (
 			<div className="nav">
-				<span className='colored'>by time</span>
-				<a href="/extras" className='nav-item'> / vs the world</a>
+				<span className='selected nav-item'>through the years</span>
+				<span className="slash"> / </span>
+				<a href="/extras" className='nav-thin nav-item'>versus the world</a>
 			</div>
 		)
 		if (path === '/extras') {
 			option = (
 				<div className="nav">
-					<a href="/" className='nav-item'>by time / </a>
-					<span className='colored'>vs the world</span>
+					<a href="/" className='nav-thin nav-item'>through the years</a>
+					<span className="slash"> / </span>
+					<span className='selected nav-item'> versus the world</span>
 				</div>)
 		}
 		switch (this.props.auth) {
 			case null:
 				return <SpotifyLogin />;
 			default:
-				const { id, url } = this.props.auth;
+				let { url } = this.props.auth;
 				return (
 					<div>
 						<div className='header bold'>
-							<span>know <a href={url}>{id}</a>'s music </span>
+							<span>know <a style={{ color: 'darkblue' }} href={url}>your</a> music </span>
+							<span><Logout /></span>
 							{option}
-							<span className='logout'>
-								<Logout />
-							</span>
 						</div>
 					</div>
 				);
