@@ -3,12 +3,12 @@ import auth from '../../services/auth';
 import api from '../../services/api';
 
 import Tracks from './Tracks';
-import PopularityCharts from './PopularityCharts';
-import DurationCharts from './DurationCharts';
-import ValenceCharts from './ValenceCharts';
-import DanceablityCharts from './DanceabilityCharts';
+import PopularityChart from './PopularityChart';
+import DurationChart from './DurationChart';
+import ValenceChart from './ValenceChart';
+import DanceablityChart from './DanceabilityChart';
 
-class ExtrasDashboard extends Component {
+class WorldDashboard extends Component {
 	state = {
 		myTracks: null,
 		globalTracks: null,
@@ -94,10 +94,10 @@ class ExtrasDashboard extends Component {
 						The popularity of a track is an algorithmically-calculated value
 						between 0 and 100, with 100 being the most popular.
 					</h3>
-					<h4 className="colored">
+					<h4 className='colored'>
 						Tips: click/tap on the legends to hide or show the data.
 					</h4>
-					<PopularityCharts
+					<PopularityChart
 						myTracks={myTracks.map((item) => item.popularity)}
 						globalTracks={globalTracks.map((item) => item.popularity)}
 					/>
@@ -105,7 +105,7 @@ class ExtrasDashboard extends Component {
 				<div className='separator'></div>
 				<div className='outer'>
 					<h1 className='colored'>duration range</h1>
-					<DurationCharts
+					<DurationChart
 						myTracks={myTracksFeatures.map((item) => item.duration_ms)}
 						globalTracks={globalTracksFeatures.map((item) => item.duration_ms)}
 					/>
@@ -118,7 +118,7 @@ class ExtrasDashboard extends Component {
 						euphoric), while tracks with low valence sound more negative (e.g.
 						sad, depressed, angry).
 					</h3>
-					<ValenceCharts
+					<ValenceChart
 						myTracks={myTracksFeatures.map((item) => item.valence)}
 						globalTracks={globalTracksFeatures.map((item) => item.valence)}
 					/>
@@ -131,7 +131,7 @@ class ExtrasDashboard extends Component {
 						a combination of musical elements including tempo, rhythm stability,
 						beat strength, and overall regularity.
 					</h3>
-					<DanceablityCharts
+					<DanceablityChart
 						myTracks={myTracksFeatures.map((item) => item.danceability)}
 						globalTracks={globalTracksFeatures.map((item) => item.danceability)}
 					/>
@@ -142,4 +142,4 @@ class ExtrasDashboard extends Component {
 	}
 }
 
-export default ExtrasDashboard;
+export default WorldDashboard;

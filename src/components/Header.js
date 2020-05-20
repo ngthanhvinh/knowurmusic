@@ -11,21 +11,26 @@ class Header extends Component {
 	}
 
 	render() {
-		const path = this.props.location.pathname
+		const path = this.props.location.pathname;
 		let option = (
-			<div className="nav">
+			<div className='nav'>
 				<span className='selected nav-item'>through the years</span>
-				<span className="slash"> / </span>
-				<a href="/extras" className='nav-thin nav-item'>versus the world</a>
+				<span className='slash'> / </span>
+				<a href='/world' className='nav-thin nav-item'>
+					versus the world
+				</a>
 			</div>
-		)
-		if (path === '/extras') {
+		);
+		if (path === '/world') {
 			option = (
-				<div className="nav">
-					<a href="/" className='nav-thin nav-item'>through the years</a>
-					<span className="slash"> / </span>
+				<div className='nav'>
+					<a href='/' className='nav-thin nav-item'>
+						through the years
+					</a>
+					<span className='slash'> / </span>
 					<span className='selected nav-item'> versus the world</span>
-				</div>)
+				</div>
+			);
 		}
 		switch (this.props.auth) {
 			case null:
@@ -35,8 +40,16 @@ class Header extends Component {
 				return (
 					<div>
 						<div className='header bold'>
-							<span>know <a style={{ color: 'darkblue' }} href={url}>your</a> music </span>
-							<span><Logout /></span>
+							<span>
+								know{' '}
+								<a style={{ color: 'darkblue' }} href={url}>
+									your
+								</a>{' '}
+								music{' '}
+							</span>
+							<span>
+								<Logout />
+							</span>
 							{option}
 						</div>
 					</div>

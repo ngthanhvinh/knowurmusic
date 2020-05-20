@@ -1,18 +1,14 @@
 import React from 'react';
-import getDistribution from '../../utils/getDistribution';
 import { Bar } from 'react-chartjs-2';
+import getDistribution from '../../utils/getDistribution';
 
-const DurationCharts = ({ myTracks, globalTracks }) => {
-	// convert to minutes
-	myTracks = myTracks.map((item) => item / 60000);
-	globalTracks = globalTracks.map((item) => item / 60000);
+const PopularityChart = ({ myTracks, globalTracks }) => {
+	let myTracksDistribution = getDistribution(myTracks, 100, 5);
+	let globalTracksDistribution = getDistribution(globalTracks, 100, 5);
 
-	let myTracksDistribution = getDistribution(myTracks, 7, 0.5);
-	let globalTracksDistribution = getDistribution(globalTracks, 7, 0.5);
-
-	let dataLabels = new Array(15);
+	let dataLabels = new Array(21);
 	for (let i = 0; i < dataLabels.length; ++i) {
-		dataLabels[i] = 0.5 * i;
+		dataLabels[i] = 5 * i;
 	}
 
 	let bothData = {
@@ -48,21 +44,21 @@ const DurationCharts = ({ myTracks, globalTracks }) => {
 		scales: {
 			xAxes: [
 				{
+					id: 'bar-x-axis1',
 					stacked: true,
 					display: false,
-					id: 'bar-x-axis1',
 					ticks: {
-						max: 6.5,
+						max: 95,
 					},
 				},
 				{
 					id: 'bar-x-axis2',
 					scaleLabel: {
 						display: true,
-						labelString: 'duration (in minutes)',
+						labelString: 'popularity',
 					},
 					ticks: {
-						max: 7,
+						max: 100,
 					},
 				},
 			],
@@ -74,7 +70,7 @@ const DurationCharts = ({ myTracks, globalTracks }) => {
 					},
 					ticks: {
 						beginAtZero: true,
-						suggestedMax: 20,
+						suggestedMax: 25,
 					},
 				},
 			],
@@ -84,4 +80,4 @@ const DurationCharts = ({ myTracks, globalTracks }) => {
 	return <Bar data={bothData} options={options} />;
 };
 
-export default DurationCharts;
+export default PopularityChart;

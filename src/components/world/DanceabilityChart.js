@@ -2,13 +2,13 @@ import React from 'react';
 import getDistribution from '../../utils/getDistribution';
 import { Bar } from 'react-chartjs-2';
 
-const ValenceCharts = ({ myTracks, globalTracks }) => {
-	let myTracksDistribution = getDistribution(myTracks, 1, 0.1);
-	let globalTracksDistribution = getDistribution(globalTracks, 1, 0.1);
+const DanceablityChart = ({ myTracks, globalTracks }) => {
+	let myTracksDistribution = getDistribution(myTracks, 1, 0.05);
+	let globalTracksDistribution = getDistribution(globalTracks, 1, 0.05);
 
-	let dataLabels = new Array(11);
+	let dataLabels = new Array(21);
 	for (let i = 0; i < dataLabels.length; ++i) {
-		dataLabels[i] = (0.1 * i).toFixed(1);
+		dataLabels[i] = (0.05 * i).toFixed(2);
 	}
 
 	let bothData = {
@@ -48,14 +48,14 @@ const ValenceCharts = ({ myTracks, globalTracks }) => {
 					stacked: true,
 					display: false,
 					ticks: {
-						max: (0.9).toFixed(1),
+						max: (0.95).toFixed(2),
 					},
 				},
 				{
 					id: 'bar-x-axis2',
 					scaleLabel: {
 						display: true,
-						labelString: 'valence',
+						labelString: 'danceability',
 					},
 					ticks: {
 						max: 1.0,
@@ -70,14 +70,18 @@ const ValenceCharts = ({ myTracks, globalTracks }) => {
 					},
 					ticks: {
 						beginAtZero: true,
-						suggestedMax: 20,
+						suggestedMax: 15,
 					},
 				},
 			],
 		},
 	};
 
-	return <Bar data={bothData} options={options} />;
+	return (
+		<div>
+			<Bar data={bothData} options={options} />
+		</div>
+	);
 };
 
-export default ValenceCharts;
+export default DanceablityChart;
