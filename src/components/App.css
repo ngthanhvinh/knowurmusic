@@ -266,8 +266,8 @@ button:focus {
 }
 
 .tracks-bar {
-    margin: none;
-    padding: none;
+    margin: 0;
+    padding: 0;
     width: 100vw;
 }
 
