@@ -8,7 +8,7 @@ import DurationChart from './DurationChart';
 import ValenceChart from './ValenceChart';
 import DanceablityChart from './DanceabilityChart';
 
-class ExtrasDashboard extends Component {
+class WorldDashboard extends Component {
 	state = {
 		myTracks: null,
 		globalTracks: null,
@@ -142,4 +142,4 @@ class ExtrasDashboard extends Component {
 	}
 }
 
-export default ExtrasDashboard;
+export default WorldDashboard;

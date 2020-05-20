@@ -2,7 +2,7 @@ import React from 'react';
 import getDistribution from '../../utils/getDistribution';
 import { Bar } from 'react-chartjs-2';
 
-const DanceablityCharts = ({ myTracks, globalTracks }) => {
+const DanceablityChart = ({ myTracks, globalTracks }) => {
 	let myTracksDistribution = getDistribution(myTracks, 1, 0.05);
 	let globalTracksDistribution = getDistribution(globalTracks, 1, 0.05);
 
@@ -84,4 +84,4 @@ const DanceablityCharts = ({ myTracks, globalTracks }) => {
 	);
 };
 
-export default DanceablityCharts;
+export default DanceablityChart;

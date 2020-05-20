@@ -2,7 +2,7 @@ import React from 'react';
 import getDistribution from '../../utils/getDistribution';
 import { Bar } from 'react-chartjs-2';
 
-const ValenceCharts = ({ myTracks, globalTracks }) => {
+const ValenceChart = ({ myTracks, globalTracks }) => {
 	let myTracksDistribution = getDistribution(myTracks, 1, 0.1);
 	let globalTracksDistribution = getDistribution(globalTracks, 1, 0.1);
 
@@ -80,4 +80,4 @@ const ValenceCharts = ({ myTracks, globalTracks }) => {
 	return <Bar data={bothData} options={options} />;
 };
 
-export default ValenceCharts;
+export default ValenceChart;

@@ -2,7 +2,7 @@ import React from 'react';
 import getDistribution from '../../utils/getDistribution';
 import { Bar } from 'react-chartjs-2';
 
-const DurationCharts = ({ myTracks, globalTracks }) => {
+const DurationChart = ({ myTracks, globalTracks }) => {
 	// convert to minutes
 	myTracks = myTracks.map((item) => item / 60000);
 	globalTracks = globalTracks.map((item) => item / 60000);
@@ -84,4 +84,4 @@ const DurationCharts = ({ myTracks, globalTracks }) => {
 	return <Bar data={bothData} options={options} />;
 };
 
-export default DurationCharts;
+export default DurationChart;

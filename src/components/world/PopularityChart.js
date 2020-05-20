@@ -2,7 +2,7 @@ import React from 'react';
 import { Bar } from 'react-chartjs-2';
 import getDistribution from '../../utils/getDistribution';
 
-const PopularityCharts = ({ myTracks, globalTracks }) => {
+const PopularityChart = ({ myTracks, globalTracks }) => {
 	let myTracksDistribution = getDistribution(myTracks, 100, 5);
 	let globalTracksDistribution = getDistribution(globalTracks, 100, 5);
 
@@ -80,4 +80,4 @@ const PopularityCharts = ({ myTracks, globalTracks }) => {
 	return <Bar data={bothData} options={options} />;
 };
 
-export default PopularityCharts;
+export default PopularityChart;
